@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ShadowRaycaster : MonoBehaviour
 {
+    // TODO: tuşu salınca arkada ışık bırak o ışık süre dolunca yok olsun o kadar
     [Header("Referanslar")]
     [Tooltip("Gölge kenar prefab’ı. Bu prefab, BoxCollider2D ve (varsa) MeshFilter/MeshCollider içermelidir.")]
     public GameObject shadowPrefab;
@@ -83,19 +84,17 @@ public class ShadowRaycaster : MonoBehaviour
 
     void Update()
     {
-        HandleMovement();
-
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse1))
         {
             isCasting = true;
             ProcessRaycasts();
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             releaseTime = Time.time;
         }
 
-        if (!Input.GetKey(KeyCode.Mouse0) && isCasting && Time.time - releaseTime >= shadowDuration)
+        if (!Input.GetKey(KeyCode.Mouse1) && isCasting && Time.time - releaseTime >= shadowDuration)
         {
             ClearShadows();
             isCasting = false;
@@ -270,14 +269,6 @@ public class ShadowRaycaster : MonoBehaviour
         float deltaY = point2.y - point1.y;
         float deltaX = point2.x - point1.x;
         return Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg;
-    }
-
-    void HandleMovement()
-    {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-        if (rb != null)
-            rb.linearVelocity = new Vector2(h, v) * 5f;
     }
 }
 
