@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -123,6 +123,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -132,10 +158,10 @@ TextureImporter:
         serializedVersion: 2
         x: 2
         y: 71
-        width: 93
-        height: 101
+        width: 628
+        height: 111
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -149,72 +175,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tedu jam quit button_1
-      rect:
-        serializedVersion: 2
-        x: 174
-        y: 156
-        width: 28
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8872e0f3960e8fe20800000000000000
-      internalID: 3384701862603007880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tedu jam quit button_2
-      rect:
-        serializedVersion: 2
-        x: 205
-        y: 89
-        width: 50
-        height: 77
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 51fbe1fb530898ad0800000000000000
-      internalID: -2699485533303816427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tedu jam quit button_3
-      rect:
-        serializedVersion: 2
-        x: 290
-        y: 88
-        width: 80
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2867bb50535196d00800000000000000
-      internalID: 966326912521303682
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: tedu jam quit button_4
       rect:
         serializedVersion: 2
@@ -223,7 +183,7 @@ TextureImporter:
         width: 179
         height: 253
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -236,121 +196,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: tedu jam quit button_5
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 89
-        width: 66
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7529258470645a690800000000000000
-      internalID: -7591584599771016617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tedu jam quit button_6
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 90
-        width: 24
-        height: 63
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 06e7966a8353e0ab0800000000000000
-      internalID: -5040032415554634144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tedu jam quit button_7
-      rect:
-        serializedVersion: 2
-        x: 375
-        y: 89
-        width: 62
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 873cbfb1bb0cbe870800000000000000
-      internalID: 8713269813939258232
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tedu jam quit button_8
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 90
-        width: 105
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1ca9c0e0757ac50e0800000000000000
-      internalID: -2279763319016613183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tedu jam quit button_9
-      rect:
-        serializedVersion: 2
-        x: 561
-        y: 89
-        width: 68
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f1cb99d35e8ef4090800000000000000
-      internalID: -8047957937809146849
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 61decc08d9799e64a99693263c16a1cd
     internalID: 0
     vertices: []
     indices: 
@@ -359,7 +209,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tedu jam quit button_0: 4441421974164044198
+      tedu jam quit button_1: 3384701862603007880
+      tedu jam quit button_2: -2699485533303816427
+      tedu jam quit button_3: 966326912521303682
+      tedu jam quit button_4: -8116138721655100612
+      tedu jam quit button_5: -7591584599771016617
+      tedu jam quit button_6: -5040032415554634144
+      tedu jam quit button_7: 8713269813939258232
+      tedu jam quit button_8: -2279763319016613183
+      tedu jam quit button_9: -8047957937809146849
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
