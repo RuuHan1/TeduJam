@@ -30,6 +30,8 @@ public class ShadowRaycaster : MonoBehaviour
     private Vector2[] rayDirections;
 
     private ShadowPool shadowPool;
+    [SerializeField] GameObject lightColumn;
+
 
     #region Yardımcı Sınıflar
 
@@ -82,7 +84,7 @@ public class ShadowRaycaster : MonoBehaviour
 
     void Update()
     {
-        
+
         if (Input.GetKey(KeyCode.Mouse1))
         {
             isCasting = true;
@@ -91,6 +93,8 @@ public class ShadowRaycaster : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse1))
         {
             releaseTime = Time.time;
+            GameObject lc = Instantiate(lightColumn, transform.position, lightColumn.transform.rotation);
+            Destroy(lc, shadowDuration);
         }
 
         if (!Input.GetKey(KeyCode.Mouse1) && isCasting && Time.time - releaseTime >= shadowDuration)

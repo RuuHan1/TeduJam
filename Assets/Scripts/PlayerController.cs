@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private PlayerInput _input;
-    private ShadowRaycaster shadowRaycaster;
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private float jumpTimeCounter;
@@ -26,10 +25,9 @@ public class PlayerController : MonoBehaviour
     public void Awake()
     {
         _input = new PlayerInput();
-        shadowRaycaster = GetComponent<ShadowRaycaster>();
         rb = GetComponent<Rigidbody2D>();
-
     }
+
     private void OnEnable()
     {
         _input.Enable();
