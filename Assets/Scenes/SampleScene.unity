@@ -119,39 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &96287493 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6564934817859361391, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
-  m_PrefabInstance: {fileID: 5189747103805182486}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &96287494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96287493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa27c2d30c47818448e70cc367f58b2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shadowPrefab: {fileID: 2832266873452896822, guid: 1c6f3af46c4b20e4aae4dc87dc05a55b, type: 3}
-  shadowMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  angleMin: -45
-  angleMax: 45
-  rayCount: 90
-  rayDistance: 5
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  shadowScaleX: 5
-  shadowDuration: 3
---- !u!95 &96287496 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: -8114091369605033753, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
-  m_PrefabInstance: {fileID: 5189747103805182486}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &124728330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,18 +986,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4351320792555668725, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 96287496}
-    - target: {fileID: 4351320792555668725, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 192
-      objectReference: {fileID: 0}
-    - target: {fileID: 4351320792555668725, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
-      propertyPath: shadowBlockLayer.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 6125736952968851161, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0693488
@@ -1078,10 +1033,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6564934817859361391, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 96287494}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -43,5 +43,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Gate
+    uniqueID: 1200054103
+    locked: 0
+  - name: Player
+    uniqueID: 1798450483
+    locked: 0
   m_RenderingLayers:
   - Default

@@ -82,6 +82,7 @@ public class ShadowRaycaster : MonoBehaviour
 
     void Update()
     {
+        
         if (Input.GetKey(KeyCode.Mouse1))
         {
             isCasting = true;
@@ -278,6 +279,8 @@ public class ShadowRaycaster : MonoBehaviour
         float deltaX = point2.x - point1.x;
         return Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg;
     }
+
+
 }
 
 public class ShadowPool
