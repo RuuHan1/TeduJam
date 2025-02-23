@@ -82,7 +82,7 @@ public class ShadowRaycaster : MonoBehaviour
 
     void Update()
     {
-        Move();
+        
         if (Input.GetKey(KeyCode.Mouse1))
         {
             isCasting = true;
@@ -280,18 +280,7 @@ public class ShadowRaycaster : MonoBehaviour
         return Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg;
     }
 
-    private void Move()
-    {
-        rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * 5;
-        if (Input.GetAxis("Horizontal") > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (Input.GetAxis("Horizontal") < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-    }
+
 }
 
 public class ShadowPool
