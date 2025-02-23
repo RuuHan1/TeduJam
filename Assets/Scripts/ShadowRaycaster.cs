@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShadowRaycaster : MonoBehaviour
@@ -24,7 +25,6 @@ public class ShadowRaycaster : MonoBehaviour
     private bool isCasting = false;
 
     private Dictionary<Collider2D, ShadowData> activeShadows = new Dictionary<Collider2D, ShadowData>();
-    private Dictionary<Collider2D, SpriteRenderer> colliderSpriteRenderers = new Dictionary<Collider2D, SpriteRenderer>();
     private Rigidbody2D rb;
 
     private Vector2[] rayDirections;
@@ -183,10 +183,8 @@ public class ShadowRaycaster : MonoBehaviour
         sd.topEdge.transform.SetParent(target.transform);
         sd.bottomEdge.transform.SetParent(target.transform);
 
-        if (!colliderSpriteRenderers.ContainsKey(target))
-            colliderSpriteRenderers[target] = target.GetComponent<SpriteRenderer>();
 
-        shadowMaterial.color = colliderSpriteRenderers[target].color;
+        shadowMaterial.color = Color.black.WithAlpha(0.75f);
 
         sd.shadowMeshObj = new GameObject("ShadowMesh");
         sd.shadowMeshObj.transform.SetParent(target.transform);

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator animator;
+    private bool isMoveable = true;
 
     public void Awake()
     {
@@ -55,10 +56,20 @@ public class PlayerController : MonoBehaviour
         {
             if (canShoot)
             {
+                rb.linearVelocity = Vector2.zero;
+                isMoveable = false;
                 animator.SetTrigger("IsAttack");
             }
         };
-        _input.Player.Jump.started += ctx => { if (isGrounded && animator.GetInteger("JumpState") == 0) JumpStateChange(1); };
+        _input.Player.Jump.started += ctx =>
+        {
+            if (isGrounded && animator.GetInteger("JumpState") == 0)
+            {
+                rb.linearVelocity = Vector2.zero;
+                isMoveable = false;
+                JumpStateChange(1);
+            }
+        };
         _input.Player.Jump.canceled += ctx => StopJump();
     }
     private void OnDisable()
@@ -67,10 +78,16 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.4f, groundLayer);
         if (isGrounded && animator.GetInteger("JumpState") == 3)
         {
             animator.SetInteger("JumpState", 0);
+        }
+
+        if (!isGrounded && animator.GetInteger("JumpState") > 1)
+        {
+            isMoveable = true;
         }
 
         if (!isGrounded && rb.linearVelocityY < 0)
@@ -80,7 +97,10 @@ public class PlayerController : MonoBehaviour
     }
     private void Move()
     {
-        rb.linearVelocity = new Vector2(moveSpeed * moveInput.x, rb.linearVelocity.y);
+        if (isMoveable)
+        {
+            rb.linearVelocity = new Vector2(moveSpeed * moveInput.x, rb.linearVelocity.y);
+        }
     }
     public void StartJump()
     {
@@ -120,7 +140,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         KeepJump();
         Move();
     }
@@ -138,11 +157,14 @@ public class PlayerController : MonoBehaviour
 
     public void TryShoot()
     {
-
         Shoot();
         canShoot = false;
         Invoke(nameof(ResetShoot), shootCooldown); // Cooldown baþlat
-                                                   //Canýmýz azalsýn
+        //Canýmýz azalsýn
+    }
 
+    private void AttackEnd()
+    {
+        isMoveable = true;
     }
 }
