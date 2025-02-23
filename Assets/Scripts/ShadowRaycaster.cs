@@ -12,7 +12,6 @@ public class ShadowRaycaster : MonoBehaviour
     [Header("Raycast Ayarları")]
     public float angleMin = 10f;
     public float angleMax = 45f;
-    private float angle;
     public int rayCount = 20;
     public float rayDistance = 10f;
     public LayerMask targetLayer;
@@ -76,7 +75,6 @@ public class ShadowRaycaster : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        angle = angleMax;
         PrecomputeRayDirections();
 
         shadowPool = new ShadowPool(shadowPrefab);
@@ -84,6 +82,7 @@ public class ShadowRaycaster : MonoBehaviour
 
     void Update()
     {
+        Move();
         if (Input.GetKey(KeyCode.Mouse1))
         {
             isCasting = true;
@@ -118,14 +117,14 @@ public class ShadowRaycaster : MonoBehaviour
 
         for (int i = 0; i < rayCount; i++)
         {
-            Vector2 direction = rayDirections[i];
+            Vector2 localDirection = rayDirections[i];
+            Vector2 direction = transform.TransformDirection(localDirection);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, rayDistance, targetLayer);
 
 #if UNITY_EDITOR
-            if (i == 0 || i == rayCount - 1)
-            {
-                Debug.DrawRay(transform.position, direction * rayDistance, Color.green);
-            }
+
+            Debug.DrawRay(transform.position, direction * rayDistance, Color.green);
+
 #endif
 
             if (hit.collider != null)
@@ -150,8 +149,8 @@ public class ShadowRaycaster : MonoBehaviour
             if (box == null) continue;
 
             Bounds bounds = box.bounds;
-            Vector2 lowerEndpoint = (data.minIndex == 0) ? data.minPoint : bounds.min;
-            Vector2 upperEndpoint = (data.maxIndex == rayCount - 1) ? data.maxPoint : new Vector2(bounds.min.x, bounds.max.y);
+            Vector2 lowerEndpoint = (data.minIndex == 0) ? data.minPoint : transform.rotation.y == 0 ? bounds.min : new Vector2(bounds.max.x, bounds.min.y);
+            Vector2 upperEndpoint = (data.maxIndex == rayCount - 1) ? data.maxPoint : transform.rotation.y == 0 ? new Vector2(bounds.min.x, bounds.max.y) : bounds.max;
 
             if (!activeShadows.ContainsKey(col))
                 activeShadows[col] = CreateShadowData(col);
@@ -222,10 +221,20 @@ public class ShadowRaycaster : MonoBehaviour
         Vector3[] vertices = new Vector3[4];
 
         GameObject child = target.GetComponentInChildren<MeshRenderer>().gameObject;
-        vertices[0] = child.transform.InverseTransformPoint(shadowData.topEdge.transform.position);
-        vertices[1] = child.transform.InverseTransformPoint(topBox.bounds.max);
-        vertices[2] = child.transform.InverseTransformPoint(new Vector2(bottomBox.bounds.max.x, bottomBox.bounds.min.y));
-        vertices[3] = child.transform.InverseTransformPoint(shadowData.bottomEdge.transform.position);
+        if (transform.rotation.y == 0)
+        {
+            vertices[0] = child.transform.InverseTransformPoint(shadowData.topEdge.transform.position);
+            vertices[1] = child.transform.InverseTransformPoint(topBox.bounds.max);
+            vertices[2] = child.transform.InverseTransformPoint(new Vector2(bottomBox.bounds.max.x, bottomBox.bounds.min.y));
+            vertices[3] = child.transform.InverseTransformPoint(shadowData.bottomEdge.transform.position);
+        }
+        else
+        {
+            vertices[0] = child.transform.InverseTransformPoint(new Vector2(topBox.bounds.min.x, topBox.bounds.max.y));
+            vertices[1] = child.transform.InverseTransformPoint(shadowData.topEdge.transform.position);
+            vertices[2] = child.transform.InverseTransformPoint(shadowData.bottomEdge.transform.position);
+            vertices[3] = child.transform.InverseTransformPoint(bottomBox.bounds.min);
+        }
 
         int[] triangles = new int[6] { 0, 1, 2, 2, 3, 0 };
 
@@ -269,6 +278,19 @@ public class ShadowRaycaster : MonoBehaviour
         float deltaY = point2.y - point1.y;
         float deltaX = point2.x - point1.x;
         return Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg;
+    }
+
+    private void Move()
+    {
+        rb.linearVelocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * 5;
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
     }
 }
 

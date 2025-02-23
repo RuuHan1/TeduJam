@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool canShoot = true;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Animator animator;
 
     public void Awake()
     {
@@ -31,9 +32,25 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _input.Enable();
-        _input.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        _input.Player.Move.performed += ctx =>
+        {
+            moveInput = ctx.ReadValue<Vector2>();
+            if (moveInput.x > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (moveInput.x < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            animator.SetFloat("Velocity", 1);
+        };
 
-        _input.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+        _input.Player.Move.canceled += ctx =>
+        {
+            moveInput = Vector2.zero;
+            animator.SetFloat("Velocity", 0);
+        };
         _input.Player.Shoot.performed += _ => TryShoot();
         _input.Player.Jump.started += ctx => StartJump();
         _input.Player.Jump.canceled += ctx => StopJump();
@@ -75,7 +92,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject projectile = Instantiate(lightProjectile, pSpawnPoin.position, Quaternion.identity);
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-        Vector2 shootDirection = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+        Vector2 shootDirection = transform.rotation.y == 0 ? Vector2.right : Vector2.left;
         rb.AddForce(shootDirection * projectileForce, ForceMode2D.Impulse);
     }
     private void FixedUpdate()
