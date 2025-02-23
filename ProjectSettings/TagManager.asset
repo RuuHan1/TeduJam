@@ -46,6 +46,12 @@ TagManager:
   - name: Gate
     uniqueID: 1200054103
     locked: 0
+  - name: Platform
+    uniqueID: 3558437907
+    locked: 0
+  - name: Enemy
+    uniqueID: 2937770283
+    locked: 0
   - name: Player
     uniqueID: 1798450483
     locked: 0
