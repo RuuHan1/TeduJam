@@ -49,6 +49,9 @@ TagManager:
   - name: Platform
     uniqueID: 3558437907
     locked: 0
+  - name: Decoration
+    uniqueID: 817727513
+    locked: 0
   - name: Enemy
     uniqueID: 2937770283
     locked: 0
