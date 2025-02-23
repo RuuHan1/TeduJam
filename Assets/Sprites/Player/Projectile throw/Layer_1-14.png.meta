@@ -103,35 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Layer_1-14_0
-      rect:
-        serializedVersion: 2
-        x: 696
-        y: 739
-        width: 12
-        height: 11
-      alignment: 9
-      pivot: {x: 0.5, y: 0.35}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 07cced2ec488b54e0800000000000000
-      internalID: -1991848546376168336
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Layer_1-14_1
       rect:
         serializedVersion: 2
-        x: 708
-        y: 309
-        width: 748
-        height: 1338
+        x: 709
+        y: 310
+        width: 746
+        height: 1336
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

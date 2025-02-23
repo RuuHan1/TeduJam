@@ -147,6 +147,11 @@ MonoBehaviour:
     m_Bits: 128
   shadowScaleX: 5
   shadowDuration: 3
+--- !u!95 &96287496 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -8114091369605033753, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
+  m_PrefabInstance: {fileID: 5189747103805182486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &124728330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1019,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4351320792555668725, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 96287496}
     - target: {fileID: 4351320792555668725, guid: c09516ca37e6af54ea6494a886d8fc7c, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 192

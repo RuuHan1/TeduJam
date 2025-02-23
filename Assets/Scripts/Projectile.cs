@@ -9,17 +9,16 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject,lifeTime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) 
+        if (!collision.gameObject.CompareTag("Player")) 
         {
-            Debug.Log("hit");
+            GetComponent<Animator>().SetTrigger("IsBoom");
         }
+    }
+
+    private void BoomEnd()
+    {
         Destroy(gameObject);
     }
 }

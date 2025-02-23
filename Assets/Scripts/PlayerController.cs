@@ -51,8 +51,14 @@ public class PlayerController : MonoBehaviour
             moveInput = Vector2.zero;
             animator.SetFloat("Velocity", 0);
         };
-        _input.Player.Shoot.performed += _ => TryShoot();
-        _input.Player.Jump.started += ctx => StartJump();
+        _input.Player.Shoot.performed += _ =>
+        {
+            if (canShoot)
+            {
+                animator.SetTrigger("IsAttack");
+            }
+        };
+        _input.Player.Jump.started += ctx => { if (isGrounded && animator.GetInteger("JumpState") == 0) JumpStateChange(1); };
         _input.Player.Jump.canceled += ctx => StopJump();
     }
     private void OnDisable()
@@ -62,24 +68,33 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.4f, groundLayer);
+        if (isGrounded && animator.GetInteger("JumpState") == 3)
+        {
+            animator.SetInteger("JumpState", 0);
+        }
+
+        if (!isGrounded && rb.linearVelocityY < 0)
+        {
+            animator.SetInteger("JumpState", 3);
+        }
     }
     private void Move()
     {
         rb.linearVelocity = new Vector2(moveSpeed * moveInput.x, rb.linearVelocity.y);
     }
-    private void StartJump()
+    public void StartJump()
     {
-        if (isGrounded)
-        {
-            isJumping = true;
-            jumpTimeCounter = maxJumpTime;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, minJumpForce);
-        }
+        isJumping = true;
+        jumpTimeCounter = maxJumpTime;
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, minJumpForce);
     }
+
     private void StopJump()
     {
         isJumping = false;
+        JumpStateChange(3);
     }
+
     private void KeepJump()
     {
         if (isJumping && jumpTimeCounter > 0)
@@ -88,35 +103,46 @@ public class PlayerController : MonoBehaviour
             jumpTimeCounter -= Time.fixedDeltaTime;
         }
     }
+
+    public void JumpStateChange(int state)
+    {
+        animator.SetInteger("JumpState", state);
+    }
+
     private void Shoot()
     {
         GameObject projectile = Instantiate(lightProjectile, pSpawnPoin.position, Quaternion.identity);
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         Vector2 shootDirection = transform.rotation.y == 0 ? Vector2.right : Vector2.left;
+        projectile.transform.rotation = transform.rotation;
         rb.AddForce(shootDirection * projectileForce, ForceMode2D.Impulse);
     }
+
     private void FixedUpdate()
     {
 
         KeepJump();
         Move();
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(groundCheck.position, 0.4f);
     }
+
     private void ResetShoot()
     {
         canShoot = true; // Cooldown bitti, tekrar ateþ edebilir
     }
-    private void TryShoot()
+
+    public void TryShoot()
     {
-        if (canShoot)
-        {
-            Shoot();
-            canShoot = false;
-            Invoke(nameof(ResetShoot), shootCooldown); // Cooldown baþlat
-        }
+
+        Shoot();
+        canShoot = false;
+        Invoke(nameof(ResetShoot), shootCooldown); // Cooldown baþlat
+                                                   //Canýmýz azalsýn
+
     }
 }
