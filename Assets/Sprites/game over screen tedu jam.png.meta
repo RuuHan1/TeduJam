@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      game over screen tedu jam_0: -1043953267668966362
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
