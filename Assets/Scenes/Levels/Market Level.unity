@@ -3430,14 +3430,6 @@ PrefabInstance:
       value: Gate
       objectReference: {fileID: 0}
     - target: {fileID: 4520723043871965670, guid: 4f81cc62d67b03342a3207e97cc29ba0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4520723043871965670, guid: 4f81cc62d67b03342a3207e97cc29ba0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4520723043871965670, guid: 4f81cc62d67b03342a3207e97cc29ba0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76.95
       objectReference: {fileID: 0}
@@ -3476,22 +3468,6 @@ PrefabInstance:
     - target: {fileID: 4520723043871965670, guid: 4f81cc62d67b03342a3207e97cc29ba0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5778150816351795335, guid: 4f81cc62d67b03342a3207e97cc29ba0, type: 3}
-      propertyPath: m_Size.x
-      value: 1.3454971
-      objectReference: {fileID: 0}
-    - target: {fileID: 5778150816351795335, guid: 4f81cc62d67b03342a3207e97cc29ba0, type: 3}
-      propertyPath: m_Size.y
-      value: 1.4145927
-      objectReference: {fileID: 0}
-    - target: {fileID: 5778150816351795335, guid: 4f81cc62d67b03342a3207e97cc29ba0, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.17274857
-      objectReference: {fileID: 0}
-    - target: {fileID: 5778150816351795335, guid: 4f81cc62d67b03342a3207e97cc29ba0, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.027639389
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

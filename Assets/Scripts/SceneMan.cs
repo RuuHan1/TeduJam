@@ -20,4 +20,5 @@ public class SceneMan : MonoBehaviour
     {
         Application.Quit();
     }
+
 }
