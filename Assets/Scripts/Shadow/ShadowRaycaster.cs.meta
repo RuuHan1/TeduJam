@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 778a21bed7a3b3541b60c502e85838ec
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shadowEdgePrefab: {fileID: 2832266873452896822, guid: 1c6f3af46c4b20e4aae4dc87dc05a55b, type: 3}
+  - shadowMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - lightColumn: {fileID: 6746594433049291317, guid: 059340c0464235b438d9b1c8b9016542, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

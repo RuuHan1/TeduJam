@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Levels/MainMenu.unity
+    path: Assets/Scenes/0_MainMenu.unity
     guid: 88a2267f1d68872499a2f6ea224d7235
   - enabled: 1
-    path: Assets/Scenes/Levels/Market Level.unity
+    path: Assets/Scenes/1_Market Level.unity
     guid: 005bd7ccfcd33044bbe3ae63567ba093
   - enabled: 1
-    path: Assets/Scenes/Levels/City Level.unity
+    path: Assets/Scenes/2_City Level.unity
     guid: 07691c06f52d5ac45a8658723e99e46d
   - enabled: 1
-    path: Assets/Scenes/Levels/House Level.unity
+    path: Assets/Scenes/4_House Level.unity
     guid: e3d64036a0113f043aa3d6908731c6ec
   - enabled: 1
-    path: Assets/Scenes/Levels/EndScreen.unity
+    path: Assets/Scenes/5_EndScreen.unity
     guid: 4bfd1da954f87fe458cd0695e45170cf
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

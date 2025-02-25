@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameObject.FindGameObjectWithTag(Tag.Player.ToString()).transform;
     }
 
 
@@ -38,12 +38,11 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag(Tag.Player.ToString()))
         {
             //gameObject.GetComponent<Player>().TakeDamage(damage);
-            Debug.Log("Player");
         }
-        if (collision.gameObject.CompareTag("Projectile"))
+        else if (collision.gameObject.CompareTag(Tag.Projectile.ToString()))
         {
             Destroy(gameObject);
         }
