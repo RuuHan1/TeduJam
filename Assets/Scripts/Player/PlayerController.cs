@@ -208,7 +208,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag(Tag.Gate.ToString()))
         {
-            SingleSceneManager.LoadNextScene();
+            VideoManager.Instance.LoadVideo(1);
         }
     }
 }
