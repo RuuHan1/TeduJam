@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
         _input.Disable();
 
         _input.Player.Move.performed -= OnMovePerformed;
+        
         _input.Player.Move.canceled -= OnMoveCanceled;
         _input.Player.Shoot.performed -= OnShootPerformed;
         _input.Player.Jump.started -= OnJumpStarted;
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.4f, groundLayer);
 
         if (_isGrounded && animator.GetInteger(AnimationState.JumpState.ToString()) == 3)
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetInteger(AnimationState.JumpState.ToString(), 3);
         }
+  
     }
 
     private void FixedUpdate()
@@ -95,6 +98,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isMoveable)
         {
+            
             _rb.linearVelocity = new Vector2(moveSpeed * _moveInput.x, _rb.linearVelocity.y);
         }
     }
@@ -113,6 +117,7 @@ public class PlayerController : MonoBehaviour
         _isJumping = true;
         _jumpTimeCounter = maxJumpTime;
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, minJumpForce);
+        
     }
 
     private void StopJump()
@@ -129,6 +134,10 @@ public class PlayerController : MonoBehaviour
     {
         _moveInput = ctx.ReadValue<Vector2>();
 
+        if (_moveInput.x != 0)
+        {
+            //SoundManager.PlaySound(SoundType.Run); // Footstep sound
+        }
         if (_moveInput.x > 0)
         {
             _transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -139,6 +148,7 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetFloat(AnimationState.Velocity.ToString(), 1);
+        
     }
 
     private void OnMoveCanceled(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
@@ -149,8 +159,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnShootPerformed(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
+
         if (_canShoot)
         {
+            //SoundManager.PlaySound(SoundType.Charge);
+           
             _rb.linearVelocity = Vector2.zero;
             _isMoveable = false;
             animator.SetTrigger(AnimationState.IsAttack.ToString());
@@ -161,6 +174,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isGrounded && animator.GetInteger(AnimationState.JumpState.ToString()) == 0)
         {
+            // SoundManager.PlaySound(SoundType.Jump);
             _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, 0);
             _isMoveable = false;
             SetJumpState(1);
@@ -175,6 +189,8 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
+        
+        
         GameObject projectile = Instantiate(lightProjectile, projectileSpawnPoint.position, Quaternion.identity);
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
 
@@ -185,6 +201,7 @@ public class PlayerController : MonoBehaviour
 
     public void TryShoot()
     {
+        
         Shoot();
         _canShoot = false;
         Invoke(nameof(ResetShoot), shootCooldown);
